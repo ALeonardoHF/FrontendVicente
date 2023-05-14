@@ -7,7 +7,7 @@ loginForm.addEventListener('submit', function (event) {
     const numeroEmpleado = document.getElementById('employee-number').value;
     const password = document.getElementById('password').value;
 
-    axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/auth/login', {
+    axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/auth/login', {
         numeroEmpleado: numeroEmpleado,
         password: password
     }).then(function (response) {
