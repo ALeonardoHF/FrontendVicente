@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Lista de Contactos</title>
+	<style>
+		.navbar {
+			display: flex;
+			justify-content: space-between;
+			
+		  }
+	</style>
+</head>
+
+<body>
+	<div class="navbar">
+		<button onclick="redirectToMenu()">Menu</button>
+		<button onclick="logOut()">Cerrar Sesión</button>
+	</div>
+	<h1>Lista de Contactos</h1>
+
+	<!-- Buscador -->
+	<input type="text" id="buscador" onkeyup="buscar()"
+		placeholder="Buscar por nombre, profesión, información relevante o número de teléfono">
+
+	<!-- Tabla de contactos -->
+	<table id="tablaContactos" border="1">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Profesión</th>
+				<th>Información Relevante</th>
+				<th>Número de Teléfono</th>
+			</tr>
+		</thead>
+		<tbody id="tabla-agenda">
+
+		</tbody>
+	</table>
+
+	<!-- Formulario para agregar nuevos contactos -->
+	<h2>Agregar Nuevo Contacto</h2>
+	<form id="agendaForm">
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre" required><br>
+
+		<label for="profesion">Profesión:</label>
+		<input type="text" id="profesion" name="profesion" required><br>
+
+		<label for="info">Información Relevante:</label>
+		<input type="text" id="info" name="info" required><br>
+
+		<label for="telefono">Número de Teléfono:</label>
+		<input type="tel" id="telefono" name="telefono" required><br>
+
+		<button type="submit">Agregar Contacto</button>
+	</form>
+
+	<!-- Script para filtrar los contactos -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/Frontend/scripts/Agenda.js"></script>
+	<script src="/Frontend/scripts/ConexionApiAgenda.js"></script>
+	<script>
+		function buscar() {
+			var input, filtro, tabla, tr, td, i, j;
+			input = document.getElementById("buscador");
+			filtro = input.value.toUpperCase();
+			tabla = document.getElementById("tablaContactos");
+			tr = tabla.getElementsByTagName("tr");
+
+			// Iterar sobre cada fila de la tabla
+			for (i = 0; i < tr.length; i++) {
+				// Iterar sobre cada columna de la fila
+				for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+					td = tr[i].getElementsByTagName("td")[j];
+					if (td) {
+						if (td.innerHTML.toUpperCase().indexOf(filtro) > -1) {
+							tr[i].style.display = "";
+							break;
+						} else {
+							tr[i].style.display = "none";
+						}
+					}
+				}
+			}
+		}
+
+  // Verifica si la variable logIn no existe en el localStorage
+  if (!localStorage.getItem('login')) {
+    // Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
+    window.location.href = "/Frontend/index.html";
+  }
+
+	</script>
+</body>
+
+</html>

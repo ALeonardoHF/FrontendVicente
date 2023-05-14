@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sistema de Reservaciones</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        
+      }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <button onclick="redirectToRegistration()">Registrar Reservación</button>
+    <button onclick="logOutCliente()">Cerrar Sesión</button>
+  </div>
+  <h1>Sistema de Reservaciones</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Tiempo Estancia</th>
+        <th>Codigo Autorización</th>
+        <th>Teléfono</th>
+        <th>Huespedes</th>
+        <th>Precio</th>
+        <th>Reservación Válida</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-reservaciones">
+      <!-- Se insetaran los registros de la base de datos dinamicamente -->
+    </tbody>
+  </table>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/Frontend/scripts/Reservacion.js"></script>
+  <script>
+    // Verifica si la variable logIn no existe en el localStorage
+    if (!localStorage.getItem('loginCliente')) {
+        // Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
+        localStorage.removeItem("user");
+        localStorage.removeItem("login");
+        localStorage.removeItem("cliente");
+        localStorage.removeItem("loginCliente");
+        window.location.href = "/Frontend/index.html";
+      }
+    </script>
+  <!-- <script src="/Frontend/scripts/ConexionApiReservaciones.js"></script> -->
+</body>
+
+</html>

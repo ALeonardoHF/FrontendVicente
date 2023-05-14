@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sistema de Reservaciones</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .navbar {
+        display: flex;
+        justify-content: space-between;
+        
+      }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <button onclick="redirectToMenu()">Menu</button>
+        <button onclick="reload()">Recargar Registros</button>
+        <button onclick="logOut()">Cerrar Sesión</button>
+    </div>
+
+    <h1>Sistema de Reservaciones en Linea</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Tiempo Estancia</th>
+                <th>Codigo Autorización</th>
+                <th>Teléfono</th>
+                <th>Huespedes</th>
+                <th>Modelo de Auto</th>
+                <th>Matrícula</th>
+                <th>Número de habitación</th>
+                <th>Precio</th>
+                <th>Reservación Válida</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-reservaciones">
+            <!-- Se insetaran los registros de la base de datos dinamicamente -->
+        </tbody>
+    </table>
+
+    <h1>Sistema de Reservaciones Locales VicMar</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Tiempo Estancia</th>
+                <th>Codigo Autorización</th>
+                <th>Teléfono</th>
+                <th>Huespedes</th>
+                <th>Modelo de Auto</th>
+                <th>Matrícula</th>
+                <th>Número de habitación</th>
+                <th>Precio</th>
+                <th>Reservación Válida</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-registros">
+            <!-- Se insetaran los registros de la base de datos dinamicamente -->
+        </tbody>
+    </table>
+
+<dialog id="modalActualizarDatosLinea">
+  <form>
+    <label for="modeloAuto">Modelo de Auto:</label>
+    <input type="text" id="modeloAuto" name="modeloAuto">
+    <label for="matricula">Matrícula:</label>
+    <input type="text" id="matricula" name="matricula">
+    <label for="numHabitacion">Número de habitación:</label>
+    <input type="number" id="numHabitacion" name="numHabitacion" min="1" max="15">
+    <button type="button" onclick="actualizarDatoLinea()">Actualizar</button>
+    <button type="button" onclick="cerrarModalLinea()">Cancelar</button>
+  </form>
+</dialog>
+
+<dialog id="modalActualizarDatosLocal">
+    <form>
+      <label for="modeloAuto">Modelo de Auto:</label>
+      <input type="text" id="modeloAutoL" name="modeloAuto">
+      <label for="matricula">Matrícula:</label>
+      <input type="text" id="matriculaL" name="matricula">
+      <label for="numHabitacion">Número de habitación:</label>
+      <input type="number" id="numHabitacionL" name="numHabitacion" min="1" max="15">
+      <button type="button" onclick="actualizarDatoLocal()">Actualizar</button>
+      <button type="button" onclick="cerrarModalLocal()">Cancelar</button>
+    </form>
+  </dialog>
+
+</body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/Frontend/scripts/ReservacionEmpleados.js"></script>
+    <script>
+        // Verifica si la variable logIn no existe en el localStorage
+        if (!localStorage.getItem('login')) {
+                // Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
+                localStorage.removeItem("user");
+                localStorage.removeItem("login");
+                localStorage.removeItem("cliente");
+                localStorage.removeItem("loginCliente");
+                window.location.href = "/Frontend/index.html";
+            }
+      </script>
+    <!-- <script src="/Frontend/scripts/RegistrosEmpleados.js"></script> -->
+    <!-- <script src="/Frontend/scripts/ConexionApiReservaciones.js"></script> -->
+
+
+</html>
