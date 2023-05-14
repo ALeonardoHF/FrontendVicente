@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sistema de inventario</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        
+      }
+    input[type = "text"] {
+        margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <button onclick="redirectToMenu()">Menu</button>
+    <button onclick="reload()">Recargar Inventario</button>
+    <button onclick="logOut()">Cerrar Sesión</button>
+  </div>
+  <h1>Sistema de inventario</h1>
+
+  <h2>Inventario</h2>
+
+  <!-- Buscador -->
+	<input type="text" id="buscador" onkeyup="buscar()"
+    placeholder="Buscador">
+
+  <table id="tablaInventario" border="1">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unidad</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-inventario">
+      <!-- Se insetaran los registros de la base de datos dinamicamente -->
+    </tbody>
+  </table>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/scripts/InventarioEmpleado.js"></script>
+
+  <script>
+    function buscar() {
+        var input, filtro, tabla, tr, td, i, j;
+        input = document.getElementById("buscador");
+        filtro = input.value.toUpperCase();
+        tabla = document.getElementById("tablaInventario");
+        tr = tabla.getElementsByTagName("tr");
+
+        // Iterar sobre cada fila de la tabla
+        for (i = 0; i < tr.length; i++) {
+            // Iterar sobre cada columna de la fila
+            for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                td = tr[i].getElementsByTagName("td")[j];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    }
+
+    // Verifica si la variable logIn no existe en el localStorage
+		if (!localStorage.getItem('login')) {
+			// Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
+			window.location.href = "/index.html";
+		}
+</script>
+</body>
+
+</html>

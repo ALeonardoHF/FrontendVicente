@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro de llegada de clientes</title>
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f1f1f1;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			margin-top: 20px;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			text-align: center;
+			font-size: 36px;
+			margin-bottom: 20px;
+		}
+
+		form label {
+			display: block;
+			margin-bottom: 5px;
+			font-size: 18px;
+			font-weight: bold;
+			color: #444;
+		}
+
+		form input,
+		form select {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			font-size: 18px;
+		}
+
+		form input[type="submit"],
+		form input[type="reset"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			font-size: 18px;
+			cursor: pointer;
+			margin-top: 20px;
+		}
+
+		form input[type="submit"]:hover,
+		form input[type="reset"]:hover {
+			background-color: #3e8e41;
+		}
+
+		.btn-reservar {
+			display: inline-block;
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 30px;
+			border: none;
+			border-radius: 5px;
+			font-size: 24px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			text-decoration: none;
+			margin-top: 20px;
+		}
+
+		.btn-reservar:hover {
+			background-color: #3e8e41;
+			transform: translateY(-3px);
+		}
+
+		.verificacionDiv {
+			margin-top: 30px;
+			display: none;
+			margin-bottom: 30px;
+		}
+
+		p {
+			text-align: center;
+		}
+
+		.codAu {
+			color: red;
+		}
+
+		.code {
+			font-size: x-large;
+			color: #3e8e41;
+			font-weight: bold;
+		}
+
+		.inputVerificacion {
+			display: flex;
+			align-content: center;
+			justify-content: center;
+			font-size: larger;
+		}
+		
+		.navbar {
+        display: flex;
+        justify-content: space-between;
+        
+      }
+	</style>
+</head>
+<body>
+	<div class="navbar">
+		<button onclick="redirectToMenu()">Menu</button>
+		<button onclick="logOut()">Cerrar Sesión</button>
+	  </div>
+	<h1>Registro de clientes VicMar</h1>
+	<div class="container">
+		<h1>Reservación onSite</h1>
+		<!-- <p>*** Las reservaciones por seguridad se tienen que realizar</p>
+		<p>con 10 horas de anticipación. ***</p> -->
+		<form id="registroForm">
+			<label for="numHabitacion">Número de Habitación:</label>
+			<input type="text" id="numHabitacion" name="numHabitacion" required>
+
+			<label for="habitacion">Tipo de habitación:</label>
+			<select id="habitacion" name="habitacion" required>
+				<option value="">Seleccione una opción</option>
+				<option value="2">2 horas - $300</option>
+				<option value="4">4 horas - $400</option>
+				<option value="12">12 horas - $500</option>
+				<option value="24">24 horas - $700</option>
+			</select>
+
+			<label for="huespedes">Cantidad de huéspedes</label>
+			<input type="number" id="huespedes" name="huespedes" required min="0">
+			<p style="color: red;">*** Habitaciones para 2 personas, cada persona extra será un monto de $100.00 mxn al total de la reservación. ***
+			</p>
+
+			<label for="checkin">Fecha y hora de llegada</label>
+			<input type="datetime-local" id="checkin" name="checkin" required>
+
+			<label for="modeloAuto">Modelo Automovil:</label>
+			<input type="text" id="modeloAuto" name="modeloAuto" required>
+
+			<label for="matricula">Matrícula del Automovil:</label>
+			<input type="text" id="matricula" name="matricula" required>
+
+			<input type="submit" value="Reservar" class="btn-reservar">
+		</form>
+	</div>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/scripts/ConexionApiRegistros.js"></script>
+  <script>
+	// Verifica si la variable logIn no existe en el localStorage
+	if (!localStorage.getItem('login')) {
+			// Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
+			localStorage.removeItem("user");
+			localStorage.removeItem("login");
+			localStorage.removeItem("cliente");
+			localStorage.removeItem("loginCliente");
+			window.location.href = "/index.html";
+		}
+  </script>
+</body>
+</html>
