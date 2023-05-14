@@ -85,11 +85,11 @@ function verificar(response) {
   }
 
 function redirectClientReservations() {
-  window.location.href = "/Reservaciones_Cliente.html";
+  window.location.href = "Reservaciones_Cliente.html";
 }
 
 function logOutCliente() {
   localStorage.removeItem("cliente");
   localStorage.removeItem("loginCliente");
-  window.location.href = "/Log_In_Cliente.html";
+  window.location.href = "Log_In_Cliente.html";
 }

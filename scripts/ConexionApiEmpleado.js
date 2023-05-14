@@ -33,10 +33,10 @@ function redirectToMenu() {
   // Comprobar si se ha producido la condición
   if (localStorage.getItem("user") && empleadoJSON.Rol === "Administrador") {
       // Cambiar la ubicación de la página actual a la nueva página
-      window.location.href = "/Interfaz_administrador.html";
+      window.location.href = "Interfaz_administrador.html";
   } else if (localStorage.getItem("user")) {
       // Cambiar la ubicación de la página actual a la nueva página
-      window.location.href = "/Interfaz Empleado.html";
+      window.location.href = "Interfaz Empleado.html";
   } else {
       // Repetir la misma acción
       redirectToNewPage();

@@ -140,7 +140,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
 }
 
 function redirectToNewPage() {
-    window.location.href = "/Log In Empleado.html";
+    window.location.href = "Log In Empleado.html";
 }
 
 function redirectToMenu() {
@@ -149,10 +149,10 @@ function redirectToMenu() {
     // Comprobar si se ha producido la condición
     if (localStorage.getItem("user") && empleadoJSON.Rol === "Administrador") {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Interfaz_administrador.html";
+        window.location.href = "Interfaz_administrador.html";
     } else if (localStorage.getItem("user")) {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Interfaz Empleado.html";
+        window.location.href = "Interfaz Empleado.html";
     } else {
         // Repetir la misma acción
         redirectToNewPage();
@@ -163,14 +163,14 @@ function redirectClient() {
     if (localStorage.getItem("cliente")) {
         // Cambiar la ubicación de la página actual a la nueva página
         logOutCliente();
-        window.location.href = "/Log_In_Cliente.html";
+        window.location.href = "Log_In_Cliente.html";
     }
 }
 
 function logOut() {
     localStorage.removeItem("user");
     localStorage.removeItem("login");
-    window.location.href = "/Log In Empleado.html";
+    window.location.href = "Log In Empleado.html";
 }
 
 function logOutCliente() {
@@ -221,7 +221,7 @@ function actualizarDatoLocal() {
         numHabitacion: numHabitacion
     })
         .then(function (response) {
-             console.log(response);
+            //  console.log(response);
         })
         .catch(function (error) {
             console.log(error);
@@ -235,10 +235,6 @@ function actualizarDatoLinea() {
     var matricula = document.getElementById("matricula").value;
     var numHabitacion = document.getElementById("numHabitacion").value;
     var idReservacion = idReservacionLinea;
-    console.log('modeloAuto :>> ', modeloAuto);
-    console.log('matricula :>> ', matricula);
-    console.log('numHabitacion :>> ', numHabitacion);
-    console.log('idReservacion :>> ', idReservacion);
 
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
     axios.post(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/actualizar/${idReservacion}`, {
@@ -247,7 +243,7 @@ function actualizarDatoLinea() {
         numHabitacion: numHabitacion
     })
         .then(function (response) {
-             console.log(response);
+            //  console.log(response);
         })
         .catch(function (error) {
             console.log(error);

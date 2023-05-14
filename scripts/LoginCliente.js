@@ -27,7 +27,7 @@ function redirectToNewPage() {
     // Comprobar si se ha producido la condición
     if (localStorage.getItem("cliente")) {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Interfaz Cliente.html";
+        window.location.href = "Interfaz Cliente.html";
     } else {
         // Repetir la misma acción
         redirectToNewPage();

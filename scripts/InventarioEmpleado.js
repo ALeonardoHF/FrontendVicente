@@ -38,7 +38,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
 
 function redirectToNewPage() {
     logOut();
-    window.location.href = "/Log In Empleado.html";
+    window.location.href = "Log In Empleado.html";
 
 
 }
@@ -65,10 +65,10 @@ function redirectToMenu() {
     // Comprobar si se ha producido la condición
     if (localStorage.getItem("user") && empleadoJSON.Rol === "Administrador") {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Interfaz_administrador.html";
+        window.location.href = "Interfaz_administrador.html";
     } else if (localStorage.getItem("user")) {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Interfaz Empleado.html";
+        window.location.href = "Interfaz Empleado.html";
     } else {
         // Repetir la misma acción
         redirectToNewPage();
@@ -79,6 +79,6 @@ function redirectClient() {
     if (localStorage.getItem("cliente")) {
         // Cambiar la ubicación de la página actual a la nueva página
         logOutCliente();
-        window.location.href = "/Log_In_Cliente.html";
+        window.location.href = "Log_In_Cliente.html";
     }
 }

@@ -36,5 +36,5 @@ form.addEventListener('submit', function (event) {
 });
 
 function redirectToLoginCliente() {
-      window.location.href = "/Log_In_Cliente.html";
+      window.location.href = "Log_In_Cliente.html";
   }
