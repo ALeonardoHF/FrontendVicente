@@ -91,11 +91,20 @@ function cerrarModal() {
 }
 
 // Función para actualizar el dato
-function obtenerValores() {
-    document.getElementById("articulo").value = document.getElementById("articuloModal").value;
-    document.getElementById("precio").value = document.getElementById("precioModal").value;
-    cerrarModal(); // Cierra el modal después de actualizar el dato
-}
+function obtenerValores(event) {
+    var button = event.target;
+    var row = button.closest('tr'); // Obtener la fila actual del botón
+    var columns = row.getElementsByTagName('td'); // Obtener las columnas de la fila
+  
+    var articulo = columns[0].innerText; // Obtener el valor de la columna "articulo"
+    var precio = columns[1].innerText; // Obtener el valor de la columna "precio"
+  
+    // Asignar los valores a los elementos deseados
+    document.getElementById("articulo").value = articulo;
+    document.getElementById("precio").value = precio;
+  
+    cerrarModal(); // Cierra el modal después de actualizar los valores
+  }
 
 function cargarTabla() {
     const tabla = document.querySelector("#tabla-inventario");
@@ -114,7 +123,7 @@ function cargarTabla() {
             <td id="cantidadModal" value="${dato.Cantidad}">${dato.Cantidad}</td>
             <input type="text" id="precioModal" value="${dato.Precio}" hidden/>
             <td id="precioModal" value="${dato.Precio}">${dato.Precio}</td>
-            <td><button onclick="obtenerValores()">Seleccionar</button></td>
+            <td><button value="${dato.productoId}" onclick="obtenerValores(event)">Seleccionar</button></td>
             `;
                     tabla.appendChild(fila);
 
