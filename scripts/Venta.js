@@ -7,7 +7,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (localStorage.getItem("user") && localStorage.getItem("login")) {
-        axios.get('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/ventas/')
+        axios.get('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/ventas/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fila = document.createElement("tr");
@@ -99,7 +99,7 @@ function obtenerValores() {
 
 function cargarTabla() {
     const tabla = document.querySelector("#tabla-inventario");
-    axios.get('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/')
+    axios.get('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fila = document.createElement("tr");

@@ -12,7 +12,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
 } else {
     if (localStorage.getItem("user") && localStorage.getItem("login")) {
         if (localStorage.getItem("user") && localStorage.getItem("login") && empleadoJSON.Rol === "Administrador") {
-            axios.get('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/empleados/')
+            axios.get('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/empleados/')
                 .then(function (response) {
                     response.data.forEach(function (dato) {
                         console.log()
@@ -51,6 +51,10 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
         logOutCliente();
         redirectToNewPage();
     }
+}
+
+function recargaEmpleados() {
+    window.location.reload();
 }
 
 function redirectToNewPage() {

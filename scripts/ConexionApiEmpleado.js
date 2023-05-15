@@ -10,21 +10,20 @@ form.addEventListener('submit', function (event) {
   const rol = document.getElementById('rol').value;
 
   // Realizar la petición a través de Axios
-  axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/empleados/', {
+  axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/empleados/', {
     nombre: nombre,
     apellido: apellido,
     password: password,
     rol: rol
   })
     .then(function (response) {
-      
+      form.reset();
+      window.location.reload();
     })
     .catch(function (error) {
       console.log(error);
     });
-
-    // mostrar los cambios dinamicos con una pequeña recarga de la pagina
-    location.reload();
+    
 });
 
 function redirectToMenu() {

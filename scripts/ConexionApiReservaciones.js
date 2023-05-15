@@ -46,7 +46,7 @@ form.addEventListener('submit', function (event) {
     console.log('precio :>> ', precio);
 
     // Realizar la petición a través de Axios
-      axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/', {
+      axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/', {
         nombre: nombre,
         telefono: telefono,
         habitacion: habitacion,
@@ -57,18 +57,18 @@ form.addEventListener('submit', function (event) {
         huespedes: huespedes
       })
         .then(function (response) {
-          console.log(response);
           if(verificar(response)) {
             verificacionDiv.style.display = "block";
             document.getElementById('codigoVerificacion').textContent = response.data.CodigoAuth;
         } else {
             verificacionDiv.style.display = "none";
         }
+        form.reset();
         })
         .catch(function (error) {
           console.log(error);
         });
-        form.reset();
+        
         // recarga la página, no es necesario en esta sección
         // location.reload();
 });

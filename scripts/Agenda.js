@@ -9,9 +9,8 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     
 } else {
 
-    if (empleadoJSON.Rol == "Empleado" && localStorage.getItem("login")) {
-        console.log('dentro del else :>> ', empleadoJSON.Rol);
-        axios.get('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/agendas/')
+    if (empleadoJSON.Rol == "Empleado" || empleadoJSON.Rol == "Administrador" && localStorage.getItem("login")) {
+        axios.get('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/agendas/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fila = document.createElement("tr");
@@ -33,6 +32,10 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     } else {
         redirectToNewPage();
     }
+}
+
+function recargarAgenda() {
+    window.location.reload();
 }
 
 function redirectToNewPage() {

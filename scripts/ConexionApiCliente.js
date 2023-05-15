@@ -19,7 +19,7 @@ form.addEventListener('submit', function (event) {
     }
 
     //   Realizar la petición a través de Axios
-    axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/clientes/', {
+    axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/clientes/', {
         nombre: nombre,
         email: email,
         password: password
@@ -30,9 +30,6 @@ form.addEventListener('submit', function (event) {
         .catch(function (error) {
             console.log(error);
         });
-
-    // mostrar los cambios dinamicos con una pequeña recarga de la pagina
-    // location.reload();
 });
 
 function redirectToLoginCliente() {

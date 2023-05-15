@@ -43,7 +43,7 @@ form.addEventListener('submit', function (event) {
     }
 
     // Realizar la petición a través de Axios
-      axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/local', {
+      axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local', {
         numHabitacion: numHabitacion,
         modeloAuto: modeloAuto,
         habitacion: habitacion,
@@ -55,14 +55,13 @@ form.addEventListener('submit', function (event) {
       })
         .then(function (response) {
           console.log(response);
+          form.reset();
+          window.location.href = "Reservaciones_Empleado.html";
+
         })
         .catch(function (error) {
           console.log(error);
         });
-        form.reset();
-        window.location.href = "Reservaciones_Empleado.html";
-        // recarga la página, no es necesario en esta sección
-        // location.reload();
 });
 
 

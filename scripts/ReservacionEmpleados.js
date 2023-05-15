@@ -16,7 +16,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (user && login) {
-        axios.get(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones`)
+        axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
 
@@ -76,7 +76,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
             });
 
         // segundo accios tabla local
-        axios.get(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local`)
+        axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fechaIn = new Date(dato.CheckIn);
@@ -215,18 +215,19 @@ function actualizarDatoLocal() {
     var idReservacion = idReservacionLocal;
 
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
-    axios.post(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/actualizar/${idReservacion}`, {
+    axios.post(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/actualizar/${idReservacion}`, {
         modeloAuto: modeloAuto,
         matricula: matricula,
         numHabitacion: numHabitacion
     })
         .then(function (response) {
             //  console.log(response);
+            window.location.reload();
         })
         .catch(function (error) {
             console.log(error);
         });
-    window.location.reload();
+    
     cerrarModalLocal(); // Cierra el modal después de actualizar el dato
 }
 
@@ -237,17 +238,18 @@ function actualizarDatoLinea() {
     var idReservacion = idReservacionLinea;
 
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
-    axios.post(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/actualizar/${idReservacion}`, {
+    axios.post(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/actualizar/${idReservacion}`, {
         modeloAuto: modeloAuto,
         matricula: matricula,
         numHabitacion: numHabitacion
     })
         .then(function (response) {
             //  console.log(response);
+            window.location.reload();
         })
         .catch(function (error) {
             console.log(error);
         });
-    // window.location.reload();
+    
     cerrarModalLinea(); // Cierra el modal después de actualizar el dato
 }
