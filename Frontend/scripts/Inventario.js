@@ -12,7 +12,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (localStorage.getItem("user") && localStorage.getItem("login") && empleadoJSON.Rol === "Administrador") {
-        axios.get('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/')
+        axios.get('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fila = document.createElement("tr");
@@ -39,10 +39,14 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     }
 }
 
+function recargaInventario() {
+    window.location.reload();
+}
+
 
 function redirectToNewPage() {
     logOut();
-    window.location.href = "/Frontend/Log In Empleado.html";
+    window.location.reload();
 }
 
 function redirectToMenu() {
@@ -51,10 +55,10 @@ function redirectToMenu() {
     // Comprobar si se ha producido la condición
     if (localStorage.getItem("user") && empleadoJSON.Rol === "Administrador") {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Frontend/Interfaz_administrador.html";
+        window.location.href = "Interfaz_administrador.html";
     } else if (localStorage.getItem("user")) {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Frontend/Interfaz Empleado.html";
+        window.location.href = "Interfaz Empleado.html";
     } else {
         // Repetir la misma acción
         redirectToNewPage();
@@ -65,14 +69,14 @@ function redirectClient() {
     if (localStorage.getItem("cliente")) {
         // Cambiar la ubicación de la página actual a la nueva página
         logOutCliente();
-        window.location.href = "/Frontend/Log_In_Cliente.html";
+        window.location.href = "Log_In_Cliente.html";
     }
 }
 
 function logOut() {
     localStorage.removeItem("user");
     localStorage.removeItem("login");
-    // window.location.reload();
+    window.location.reload();
 }
 
 function logOutCliente() {
@@ -92,21 +96,23 @@ function actualizar(event) {
 function cerrarModal() {
     var modal = document.getElementById("modalActualizarDatos");
     modal.close(); // Cierra el modal
+    setTimeout(function() {
+        window.location.reload();
+    }, 2000);
 }
 
 // Función para actualizar el dato
 function actualizarDato() {
   var cantidad = document.getElementById("cantidadModal").value;
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
-    axios.post(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/actualizar/${productoId}`, {
+    axios.post(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/actualizar/${productoId}`, {
         cantidad: cantidad,
     })
         .then(function (response) {
-             console.log(response);
+            
         })
         .catch(function (error) {
             console.log(error);
         });
-    window.location.reload();
     cerrarModal(); // Cierra el modal después de actualizar el dato
 }

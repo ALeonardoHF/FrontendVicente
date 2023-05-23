@@ -15,6 +15,7 @@
 <body>
 	<div class="navbar">
 		<button onclick="redirectToMenu()">Menu</button>
+		<button onclick="recargarAgenda()">Recargar Agenda</button>
 		<button onclick="logOut()">Cerrar Sesión</button>
 	</div>
 	<h1>Lista de Contactos</h1>
@@ -58,8 +59,8 @@
 
 	<!-- Script para filtrar los contactos -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="/Frontend/scripts/Agenda.js"></script>
-	<script src="/Frontend/scripts/ConexionApiAgenda.js"></script>
+	<script src="scripts/Agenda.js"></script>
+	<script src="scripts/ConexionApiAgenda.js"></script>
 	<script>
 		function buscar() {
 			var input, filtro, tabla, tr, td, i, j;
@@ -88,7 +89,7 @@
   // Verifica si la variable logIn no existe en el localStorage
   if (!localStorage.getItem('login')) {
     // Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
-    window.location.href = "/Frontend/index.html";
+    window.location.href = "index.html";
   }
 
 	</script>

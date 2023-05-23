@@ -80,22 +80,22 @@
 					const bId = event.target.id;
 					switch (bId) {
 						case 'registros':
-						window.location.href = "./Registros.html";
+						window.location.href = "Registros.html";
 						break;
 						case 'reservaciones':
-							window.location.href = "./Reservaciones_Empleado.html";
+							window.location.href = "Reservaciones_Empleado.html";
 							break;
 						case 'ventas':
-							window.location.href = "./Punto de venta.html";
+							window.location.href = "Punto de venta.html";
 							break;
 						case 'inventario':
-							window.location.href = "./Inventario.html";
+							window.location.href = "Inventario.html";
 							break;
 						case 'buscador':
-							window.location.href = "./Buscador.html";
+							window.location.href = "Buscador.html";
 							break;
 						case 'alta':
-							window.location.href = "./Interfaz_alta_empleado.html";
+							window.location.href = "Interfaz_alta_empleado.html";
 							break;
 					}
 				}
@@ -106,7 +106,7 @@
 			}
 		}
 		function redirectToNewPage() {
-			window.location.href = "/Frontend/Log In Empleado.html";
+			window.location.href = "Log In Empleado.html";
 
 		}
 
@@ -114,14 +114,14 @@
 			if (localStorage.getItem("cliente")) {
 				// Cambiar la ubicación de la página actual a la nueva página
 				logOutCliente();
-				window.location.href = "/Frontend/Log_In_Cliente.html";
+				window.location.href = "Log_In_Cliente.html";
 			}
 		}
 
 		function logOut() {
 			localStorage.removeItem("user");
 			localStorage.removeItem("login");
-			window.location.href = "/Frontend/Log In Empleado.html";
+			window.location.href = "Log In Empleado.html";
 		}
 
 		function logOutCliente() {
@@ -133,7 +133,7 @@
 		// Verifica si la variable logIn no existe en el localStorage
 		if (!localStorage.getItem('login')) {
 			// Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
-			window.location.href = "/Frontend/index.html";
+			window.location.href = "index.html";
 		}
 	</script>
 </body>

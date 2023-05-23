@@ -7,7 +7,7 @@ const tabla = document.querySelector("#tabla-reservaciones");
 const cliente = localStorage.getItem("cliente");
 const clienteJSON = JSON.parse(cliente);
 
-axios.get(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}`)
+axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}`)
     .then(function (response) {
         response.data.forEach(function (dato) {
 
@@ -63,11 +63,11 @@ axios.get(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/res
     });
 
     function redirectToRegistration() {
-        window.location.href = "/Frontend/Interfaz Cliente.html";
+        window.location.href = "Interfaz Cliente.html";
     }
 
     function logOutCliente() {
         localStorage.removeItem("cliente");
         localStorage.removeItem("loginCliente");
-        window.location.href = "/Frontend/Log_In_Cliente.html";
+        window.location.href = "Log_In_Cliente.html";
     }

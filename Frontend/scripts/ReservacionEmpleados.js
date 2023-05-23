@@ -16,7 +16,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (user && login) {
-        axios.get(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones`)
+        axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
 
@@ -76,7 +76,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
             });
 
         // segundo accios tabla local
-        axios.get(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local`)
+        axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fechaIn = new Date(dato.CheckIn);
@@ -140,7 +140,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
 }
 
 function redirectToNewPage() {
-    window.location.href = "/Frontend/Log In Empleado.html";
+    window.location.href = "Log In Empleado.html";
 }
 
 function redirectToMenu() {
@@ -149,10 +149,10 @@ function redirectToMenu() {
     // Comprobar si se ha producido la condición
     if (localStorage.getItem("user") && empleadoJSON.Rol === "Administrador") {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Frontend/Interfaz_administrador.html";
+        window.location.href = "Interfaz_administrador.html";
     } else if (localStorage.getItem("user")) {
         // Cambiar la ubicación de la página actual a la nueva página
-        window.location.href = "/Frontend/Interfaz Empleado.html";
+        window.location.href = "Interfaz Empleado.html";
     } else {
         // Repetir la misma acción
         redirectToNewPage();
@@ -163,14 +163,14 @@ function redirectClient() {
     if (localStorage.getItem("cliente")) {
         // Cambiar la ubicación de la página actual a la nueva página
         logOutCliente();
-        window.location.href = "/Frontend/Log_In_Cliente.html";
+        window.location.href = "Log_In_Cliente.html";
     }
 }
 
 function logOut() {
     localStorage.removeItem("user");
     localStorage.removeItem("login");
-    window.location.href = "/Frontend/Log In Empleado.html";
+    window.location.href = "Log In Empleado.html";
 }
 
 function logOutCliente() {
@@ -215,18 +215,19 @@ function actualizarDatoLocal() {
     var idReservacion = idReservacionLocal;
 
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
-    axios.post(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/actualizar/${idReservacion}`, {
+    axios.post(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/actualizar/${idReservacion}`, {
         modeloAuto: modeloAuto,
         matricula: matricula,
         numHabitacion: numHabitacion
     })
         .then(function (response) {
-             console.log(response);
+            //  console.log(response);
+            window.location.reload();
         })
         .catch(function (error) {
             console.log(error);
         });
-    window.location.reload();
+    
     cerrarModalLocal(); // Cierra el modal después de actualizar el dato
 }
 
@@ -235,23 +236,20 @@ function actualizarDatoLinea() {
     var matricula = document.getElementById("matricula").value;
     var numHabitacion = document.getElementById("numHabitacion").value;
     var idReservacion = idReservacionLinea;
-    console.log('modeloAuto :>> ', modeloAuto);
-    console.log('matricula :>> ', matricula);
-    console.log('numHabitacion :>> ', numHabitacion);
-    console.log('idReservacion :>> ', idReservacion);
 
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
-    axios.post(`http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/actualizar/${idReservacion}`, {
+    axios.post(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/actualizar/${idReservacion}`, {
         modeloAuto: modeloAuto,
         matricula: matricula,
         numHabitacion: numHabitacion
     })
         .then(function (response) {
-             console.log(response);
+            //  console.log(response);
+            window.location.reload();
         })
         .catch(function (error) {
             console.log(error);
         });
-    // window.location.reload();
+    
     cerrarModalLinea(); // Cierra el modal después de actualizar el dato
 }

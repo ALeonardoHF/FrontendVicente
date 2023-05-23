@@ -62,7 +62,7 @@
 
 <body>
   <div class="back-button">
-    <button onclick="window.location.href = '/Frontend/index.html'">Regresar</button>
+    <button onclick="window.location.href = 'index.html'">Regresar</button>
   </div>
   <form id="clienteLogin">
     <h2>Iniciar Sesión</h2>
@@ -80,13 +80,13 @@
   </form>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <!-- <script src="/Frontend/scripts/Cliente.js"></script> -->
-  <script src="/Frontend/scripts/LoginCliente.js"></script>
+  <!-- <script src="scripts/Cliente.js"></script> -->
+  <script src="scripts/LoginCliente.js"></script>
   <script>
     if(localStorage.getItem("login")) {
-      window.location.href = "/Frontend/Interfaz Empleado.html";
+      window.location.href = "Interfaz Empleado.html";
     } else if(localStorage.getItem("loginCliente")) {
-      window.location.href = "/Frontend/Interfaz Cliente.html";
+      window.location.href = "Interfaz Cliente.html";
     }
   </script>
 </body>

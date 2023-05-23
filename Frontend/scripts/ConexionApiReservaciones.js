@@ -13,11 +13,12 @@ form.addEventListener('submit', function (event) {
     const huespedes = document.getElementById('huespedes').value;
     var auxCheckIn = new Date(checkin);
     let checkOut = auxCheckIn.setHours(auxCheckIn.getHours() + parseInt(habitacion));
-    console.log('checkOut :>> ', checkOut);
-    console.log('auxCheckIn :>> ', auxCheckIn);
-    console.log('checkin :>> ', checkin);
-    console.log('habitacion :>> ', parseInt(habitacion));
+
     let precio;
+
+    console.log('checkin :>> ', checkin);
+    console.log('auxCheckIn :>> ', auxCheckIn);
+    console.log('checkOut :>> ', checkOut);
 
     // obtener de localstorage el id del cliente
     const cliente = localStorage.getItem("cliente");
@@ -46,7 +47,7 @@ form.addEventListener('submit', function (event) {
     console.log('precio :>> ', precio);
 
     // Realizar la petición a través de Axios
-      axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/', {
+      axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/', {
         nombre: nombre,
         telefono: telefono,
         habitacion: habitacion,
@@ -57,18 +58,18 @@ form.addEventListener('submit', function (event) {
         huespedes: huespedes
       })
         .then(function (response) {
-          console.log(response);
           if(verificar(response)) {
             verificacionDiv.style.display = "block";
             document.getElementById('codigoVerificacion').textContent = response.data.CodigoAuth;
         } else {
             verificacionDiv.style.display = "none";
         }
+        form.reset();
         })
         .catch(function (error) {
           console.log(error);
         });
-        form.reset();
+        
         // recarga la página, no es necesario en esta sección
         // location.reload();
 });
@@ -85,11 +86,11 @@ function verificar(response) {
   }
 
 function redirectClientReservations() {
-  window.location.href = "/Frontend/Reservaciones_Cliente.html";
+  window.location.href = "Reservaciones_Cliente.html";
 }
 
 function logOutCliente() {
   localStorage.removeItem("cliente");
   localStorage.removeItem("loginCliente");
-  window.location.href = "/Frontend/Log_In_Cliente.html";
+  window.location.href = "Log_In_Cliente.html";
 }

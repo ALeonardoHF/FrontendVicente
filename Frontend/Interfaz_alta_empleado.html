@@ -107,6 +107,7 @@
 <body>
     <div class="navbar">
         <button onclick="redirectToMenu()">Menu</button>
+        <button onclick="recargaEmpleados()">Recargar empleados</button>
         <button onclick="logOut()">Cerrar Sesión</button>
       </div>
     <h1>Agregar Empleado</h1>
@@ -150,8 +151,8 @@
     </table>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/Frontend/scripts/Empleado.js"></script>
-    <script src="/Frontend/scripts/ConexionApiEmpleado.js"></script>
+    <script src="scripts/Empleado.js"></script>
+    <script src="scripts/ConexionApiEmpleado.js"></script>
     <script>
         var buttons = document.querySelectorAll("button");
         buttons.forEach(function (button) {
@@ -163,7 +164,7 @@
         // Verifica si la variable logIn no existe en el localStorage
 		if (!localStorage.getItem('login')) {
 			// Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
-			window.location.href = "/Frontend/index.html";
+			window.location.href = "index.html";
 		}
     </script>
 </body>

@@ -27,17 +27,18 @@ form.addEventListener('submit', function (event) {
   // console.log(auxVenta);
 
   // Realizar la petición a través de Axios
-  axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/', {
+  axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/inventarios/', {
     nombre: producto,
     precio: auxPrecio,
     cantidad: cantidad,
     venta: auxVenta
   })
     .then(function (response) {
-      // console.log(response);
+      form.reset();
+      window.location.reload();
     })
     .catch(function (error) {
       console.log(error);
     });
-    location.reload();
+
 });

@@ -14,19 +14,17 @@ form.addEventListener('submit', function (event) {
   console.log(numtel);
 
   // Realizar la petición a través de Axios
-  axios.post('http://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/agendas/', {
+  axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/agendas/', {
     nombre: nombre,
     profesion: profesion,
     inforel: inforel,
     numtel: numtel
   })
     .then(function (response) {
-      console.log(response);
+      location.reload();
+      form.reset();
     })
     .catch(function (error) {
       console.log(error);
     });
-
-    // mostrar los cambios dinamicos con una pequeña recarga de la pagina
-    location.reload();
 });
