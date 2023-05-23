@@ -16,6 +16,8 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (user && login) {
+            // Producción > https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones
+            // Desarrollo > http://localhost:3002/api/reservaciones
         axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
@@ -23,16 +25,23 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
                     const fechaIn = new Date(dato.CheckIn);
                     const fechaOut = new Date(dato.CheckOut);
 
-                    const diaIn = fechaIn.getDate().toString().padStart(2, '0');
-                    const mesIn = (fechaIn.getMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
-                    const anioIn = fechaIn.getFullYear();
-                    const horasIn = fechaIn.getHours().toString().padStart(2, '0');
-                    const minutosIn = fechaIn.getMinutes().toString().padStart(2, '0');
-                    const segundosIn = fechaIn.getSeconds().toString().padStart(2, '0');
+                    const diaIn = fechaIn.getUTCDay().toString().padStart(2, '0');
+                    const mesIn = (fechaIn.getUTCMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
+                    const anioIn = fechaIn.getUTCFullYear();
+                    let horasIn = fechaIn.getUTCHours() - 1;
+
+                    if(horasIn < 0) {
+                        horasIn = 23;
+                    }
+
+                    horasIn.toString().padStart(2, '0');
+
+                    const minutosIn = fechaIn.getUTCMinutes().toString().padStart(2, '0');
+                    const segundosIn = fechaIn.getUTCSeconds().toString().padStart(2, '0');
 
                     const fechaFormateadaIn = `${diaIn}-${mesIn}-${anioIn} ${horasIn}:${minutosIn}:${segundosIn}`;
 
-                    const diaOut = fechaOut.getDate().toString().padStart(2, '0');
+                    const diaOut = fechaOut.getDay().toString().padStart(2, '0');
                     const mesOut = (fechaOut.getMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
                     const anioOut = fechaOut.getFullYear();
                     const horasOut = fechaOut.getHours().toString().padStart(2, '0');
@@ -76,22 +85,30 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
             });
 
         // segundo accios tabla local
+        // Producción > https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local
+        // Desarrollo > http://localhost:3002/api/registros/local
         axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fechaIn = new Date(dato.CheckIn);
                     const fechaOut = new Date(dato.CheckOut);
 
-                    const diaIn = fechaIn.getDate().toString().padStart(2, '0');
-                    const mesIn = (fechaIn.getMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
-                    const anioIn = fechaIn.getFullYear();
-                    const horasIn = fechaIn.getHours().toString().padStart(2, '0');
-                    const minutosIn = fechaIn.getMinutes().toString().padStart(2, '0');
-                    const segundosIn = fechaIn.getSeconds().toString().padStart(2, '0');
+                    const diaIn = fechaIn.getUTCDay().toString().padStart(2, '0');
+                    const mesIn = (fechaIn.getUTCMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
+                    const anioIn = fechaIn.getUTCFullYear();
+                    let horasIn = fechaIn.getUTCHours() - 1;
+
+                    if(horasIn < 0) {
+                        horasIn = 23;
+                    }
+
+                    horasIn.toString().padStart(2, '0');
+                    const minutosIn = fechaIn.getUTCMinutes().toString().padStart(2, '0');
+                    const segundosIn = fechaIn.getUTCSeconds().toString().padStart(2, '0');
 
                     const fechaFormateadaIn = `${diaIn}-${mesIn}-${anioIn} ${horasIn}:${minutosIn}:${segundosIn}`;
 
-                    const diaOut = fechaOut.getDate().toString().padStart(2, '0');
+                    const diaOut = fechaOut.getDay().toString().padStart(2, '0');
                     const mesOut = (fechaOut.getMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
                     const anioOut = fechaOut.getFullYear();
                     const horasOut = fechaOut.getHours().toString().padStart(2, '0');

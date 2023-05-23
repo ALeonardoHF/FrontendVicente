@@ -6,12 +6,16 @@ form.addEventListener('submit', function (event) {
     // Obtener los datos del formulario
     const numHabitacion = document.getElementById('numHabitacion').value;
     const habitacion = document.getElementById('habitacion').value;
-    const checkin = document.getElementById('checkin');
+    const checkin = document.getElementById('checkin').value;
     const huespedes = document.getElementById('huespedes').value;
     const modeloAuto = document.getElementById('modeloAuto').value;
     const matricula = document.getElementById('matricula').value;
     var auxCheckIn = new Date(checkin);
     let checkOut = auxCheckIn.setHours(auxCheckIn.getHours() + parseInt(habitacion));
+    // console.log('checkOut :>> ', checkOut);
+    // console.log('auxCheckIn :>> ', auxCheckIn);
+    // console.log('checkin :>> ', checkin);
+    // console.log('habitacion :>> ', parseInt(habitacion));
     let precio;
 
     // obtener de localstorage el id del cliente
@@ -39,7 +43,9 @@ form.addEventListener('submit', function (event) {
     }
 
     // Realizar la petición a través de Axios
-      axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local', {
+    // Producción > https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/registros/local
+    // Desarrollo > http://localhost:3002/api/registros/local
+      axios.post('http://localhost:3002/api/registros/local', {
         numHabitacion: numHabitacion,
         modeloAuto: modeloAuto,
         habitacion: habitacion,
@@ -51,8 +57,8 @@ form.addEventListener('submit', function (event) {
       })
         .then(function (response) {
           console.log(response);
-          // form.reset();
-          // window.location.href = "Reservaciones_Empleado.html";
+          form.reset();
+          window.location.href = "Reservaciones_Empleado.html";
 
         })
         .catch(function (error) {

@@ -7,6 +7,8 @@ const tabla = document.querySelector("#tabla-reservaciones");
 const cliente = localStorage.getItem("cliente");
 const clienteJSON = JSON.parse(cliente);
 
+    // Producción > https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}
+    // Desarrollo > http://localhost:3002/api/reservaciones/${clienteJSON.idCliente}
 axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}`)
     .then(function (response) {
         response.data.forEach(function (dato) {
@@ -14,12 +16,12 @@ axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/re
             const fechaIn = new Date(dato.CheckIn);
             const fechaOut = new Date(dato.CheckOut);
 
-            const diaIn = fechaIn.getDate().toString().padStart(2, '0');
-            const mesIn = (fechaIn.getMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
-            const anioIn = fechaIn.getFullYear();
-            const horasIn = fechaIn.getHours().toString().padStart(2, '0');
-            const minutosIn = fechaIn.getMinutes().toString().padStart(2, '0');
-            const segundosIn = fechaIn.getSeconds().toString().padStart(2, '0');
+            const diaIn = fechaIn.getUTCDate().toString().padStart(2, '0');
+            const mesIn = (fechaIn.getUTCMonth() + 1).toString().padStart(2, '0'); // ¡Recuerda que los meses son base 0!
+            const anioIn = fechaIn.getUTCFullYear();
+            const horasIn = fechaIn.getUTCHours().toString().padStart(2, '0') - 1;
+            const minutosIn = fechaIn.getUTCMinutes().toString().padStart(2, '0');
+            const segundosIn = fechaIn.getUTCSeconds().toString().padStart(2, '0');
 
             const fechaFormateadaIn = `${diaIn}-${mesIn}-${anioIn} ${horasIn}:${minutosIn}:${segundosIn}`;
 

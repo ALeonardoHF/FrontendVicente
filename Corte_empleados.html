@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Punto de venta - Corte de turno</title>
+    <style>
+        table {
+            border: 2px solid black;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .contenido {
+            margin-top: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <button onclick="redirectToMenu()">Menu</button>
+        <button id="cerrarSesion" onclick="logOut()">Cerrar Sesión</button>
+    </div>
+    <main class="contenido">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ventas Inventario</th>
+                    <th>Renta habitaciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-venta">
+
+            </tbody>
+        </table>
+    </main>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="scripts/Corte.js"></script>
+<script>
+    // Verifica si la variable logIn no existe en el localStorage
+    if (!localStorage.getItem('login')) {
+        // Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
+        window.location.href = "index.html";
+    }
+</script>
+
+</html>

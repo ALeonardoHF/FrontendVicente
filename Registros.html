@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Registro de llegada de clientes</title>
 	<style>
@@ -110,20 +109,19 @@
 			justify-content: center;
 			font-size: larger;
 		}
-
+		
 		.navbar {
-			display: flex;
-			justify-content: space-between;
-
-		}
+        display: flex;
+        justify-content: space-between;
+        
+      }
 	</style>
 </head>
-
 <body>
 	<div class="navbar">
 		<button onclick="redirectToMenu()">Menu</button>
 		<button onclick="logOut()">Cerrar Sesión</button>
-	</div>
+	  </div>
 	<h1>Registro de clientes VicMar</h1>
 	<div class="container">
 		<h1>Reservación Local</h1>
@@ -144,8 +142,7 @@
 
 			<label for="huespedes">Cantidad de huéspedes</label>
 			<input type="number" id="huespedes" name="huespedes" required min="0">
-			<p style="color: red;">*** Habitaciones para 2 personas, cada persona extra será un monto de $100.00 mxn al
-				total de la reservación. ***
+			<p style="color: red;">*** Habitaciones para 2 personas, cada persona extra será un monto de $100.00 mxn al total de la reservación. ***
 			</p>
 
 			<label for="checkin">Fecha y hora de llegada</label>
@@ -161,29 +158,10 @@
 		</form>
 	</div>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="scripts/ConexionApiRegistros.js"></script>
-	<script>
-		// Obtener la hora actual
-		var fechaHoraActual = new Date();
-
-		// Convertir la hora a UTC
-		var fechaHoraUTC = new Date(fechaHoraActual.getTime() - fechaHoraActual.getTimezoneOffset() * 60000);
-
-		// Obtener los componentes de fecha y hora en formato UTC
-		var anio = fechaHoraUTC.getUTCFullYear();
-		var mes = ('0' + (fechaHoraUTC.getUTCMonth() + 1)).slice(-2);
-		var dia = ('0' + fechaHoraUTC.getUTCDate()).slice(-2);
-		var hora = ('0' + fechaHoraUTC.getUTCHours()).slice(-2);
-		var minutos = ('0' + fechaHoraUTC.getUTCMinutes()).slice(-2);
-
-		// Generar la cadena de fecha y hora en formato adecuado
-		var fechaHoraMinima = anio + '-' + mes + '-' + dia + 'T' + hora + ':' + minutos;
-
-		// Establecer el valor mínimo en el campo de entrada datetime
-		document.getElementById('checkin').setAttribute('min', fechaHoraMinima);
-
-		// Verifica si la variable logIn no existe en el localStorage
-		if (!localStorage.getItem('login')) {
+  <script src="scripts/ConexionApiRegistros.js"></script>
+  <script>
+	// Verifica si la variable logIn no existe en el localStorage
+	if (!localStorage.getItem('login')) {
 			// Redirige al usuario a una página de inicio de sesión o a una página de acceso no autorizado
 			localStorage.removeItem("user");
 			localStorage.removeItem("login");
@@ -191,9 +169,6 @@
 			localStorage.removeItem("loginCliente");
 			window.location.href = "index.html";
 		}
-
-
-	</script>
+  </script>
 </body>
-
 </html>

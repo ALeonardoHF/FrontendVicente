@@ -65,6 +65,7 @@
 		<button class="btn" id="inventario" onclick="checkValue(event)">Inventario</button>
 		<button class="btn" id="buscador" onclick="checkValue(event)">Buscador de contacto</button>
 		<button class="btn" id="alta" onclick="checkValue(event)">Alta empleados</button>
+		<button class="btn" id="corte" onclick="checkValue(event)">Corte General</button>
 	</div>
 
 
@@ -80,8 +81,8 @@
 					const bId = event.target.id;
 					switch (bId) {
 						case 'registros':
-						window.location.href = "Registros.html";
-						break;
+							window.location.href = "Registros.html";
+							break;
 						case 'reservaciones':
 							window.location.href = "Reservaciones_Empleado.html";
 							break;
@@ -96,6 +97,9 @@
 							break;
 						case 'alta':
 							window.location.href = "Interfaz_alta_empleado.html";
+							break;
+						case 'corte':
+							window.location.href = "Corte_empleados.html";
 							break;
 					}
 				}

@@ -96,9 +96,6 @@ function actualizar(event) {
 function cerrarModal() {
     var modal = document.getElementById("modalActualizarDatos");
     modal.close(); // Cierra el modal
-    setTimeout(function() {
-        window.location.reload();
-    }, 2000);
 }
 
 // Función para actualizar el dato
@@ -109,10 +106,11 @@ function actualizarDato() {
         cantidad: cantidad,
     })
         .then(function (response) {
-            
+             console.log(response);
         })
         .catch(function (error) {
             console.log(error);
         });
+    // window.location.reload();
     cerrarModal(); // Cierra el modal después de actualizar el dato
 }
