@@ -7,9 +7,9 @@ const tabla = document.querySelector("#tabla-reservaciones");
 const cliente = localStorage.getItem("cliente");
 const clienteJSON = JSON.parse(cliente);
 
-    // Producción > https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}
+    // Producción > https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}
     // Desarrollo > http://localhost:3002/api/reservaciones/${clienteJSON.idCliente}
-axios.get(`https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}`)
+axios.get(`https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/reservaciones/${clienteJSON.idCliente}`)
     .then(function (response) {
         response.data.forEach(function (dato) {
 

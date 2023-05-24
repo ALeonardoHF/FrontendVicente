@@ -12,7 +12,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
 } else {
     if (localStorage.getItem("user") && localStorage.getItem("login")) {
         if (localStorage.getItem("user") && localStorage.getItem("login") && empleadoJSON.Rol === "Administrador") {
-            axios.get('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/empleados/')
+            axios.get('https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/empleados/')
                 .then(function (response) {
                     response.data.forEach(function (dato) {
                         console.log()

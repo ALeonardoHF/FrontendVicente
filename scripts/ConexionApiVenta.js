@@ -9,7 +9,7 @@ form.addEventListener('submit', function (event) {
   const cantidad = document.getElementById('cantidad').value;
 
   // Realizar la petición a través de Axios
-  axios.post('https://app-bc0dc83c-1d65-4372-933f-60eb4283de54.cleverapps.io/api/ventas/', {
+  axios.post('https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/ventas/', {
     articulo: articulo,
     tipoarticulo: tipoarticulo,
     precio: precio,
