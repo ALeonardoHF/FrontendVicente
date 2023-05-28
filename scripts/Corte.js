@@ -26,21 +26,38 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
                 console.log(error);
             });
 
-            if(reservaciones == null) {
-                reservaciones = 0;
-            }
+        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/v1/ventas/corte')
+            .then(function (response) {
+                reservaciones = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
-            if(registros == null) {
-                registros = 0;
-            }
+        if (reservaciones == null) {
+            reservaciones = 0;
+        }
 
+        if (registros == null) {
+            registros = 0;
+        }
 
-        const fila = document.createElement("tr");
+        if (ventas == null) {
+            ventas = 0;
+        }
+
+        const fila1 = tabla.insertRow();
+        var totalVentasCelda = fila1.insertCell();
+        var totalResRegCelda = fila1.insertCell();
+
+        totalVentasCelda.innerHTML = ventas;
+
         let totalResReg = reservaciones + registros;
-        fila.innerHTML = `
-        <td>Pendiente Ventas</td>
-        <td>${totalResReg}</td>
-        `;
+        totalResRegCelda.innerHTML = totalResReg;
+
+        console.log('reservaciones :>> ', reservaciones);
+        console.log('registros :>> ', registros);
+        console.log(totalResReg);
 
     } else {
         redirectToNewPage();
