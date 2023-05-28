@@ -14,7 +14,6 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/registros/corte')
             .then(function (response) {
                 registros = response.data;
-                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -22,11 +21,19 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/corte/reservaciones')
             .then(function (response) {
                 reservaciones = response.data;
-                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error);
             });
+
+            if(reservaciones == null) {
+                reservaciones = 0;
+            }
+
+            if(registros == null) {
+                registros = 0;
+            }
+
 
         const fila = document.createElement("tr");
         let totalResReg = reservaciones + registros;
