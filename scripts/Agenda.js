@@ -10,7 +10,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
 } else {
 
     if (empleadoJSON.Rol == "Empleado" || empleadoJSON.Rol == "Administrador" && localStorage.getItem("login")) {
-        axios.get('https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/agendas/')
+        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/agendas/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fila = document.createElement("tr");

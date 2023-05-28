@@ -12,7 +12,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (localStorage.getItem("user") && localStorage.getItem("login") && empleadoJSON.Rol === "Administrador") {
-        axios.get('https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/inventarios/')
+        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/inventarios/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
                     const fila = document.createElement("tr");
@@ -102,7 +102,7 @@ function cerrarModal() {
 function actualizarDato() {
   var cantidad = document.getElementById("cantidadModal").value;
     // Aquí puedes hacer lo necesario para actualizar el dato, por ejemplo, enviar una solicitud HTTP al servidor
-    axios.post(`https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/inventarios/actualizar/${productoId}`, {
+    axios.post(`https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/inventarios/actualizar/${productoId}`, {
         cantidad: cantidad,
     })
         .then(function (response) {

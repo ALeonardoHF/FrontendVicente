@@ -48,7 +48,7 @@ form.addEventListener('submit', function (event) {
   // Realizar la petición a través de Axios
   // Producción > https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/reservaciones/
   // Desarrollo > http://localhost:3002/api/reservaciones/
-  axios.post('https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/reservaciones/', {
+  axios.post('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/reservaciones/', {
     nombre: nombre,
     telefono: telefono,
     habitacion: habitacion,
