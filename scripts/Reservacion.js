@@ -73,3 +73,5 @@ axios.get(`https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/re
         localStorage.removeItem("loginCliente");
         window.location.href = "Log_In_Cliente.html";
     }
+
+    // https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io

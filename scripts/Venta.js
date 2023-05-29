@@ -7,6 +7,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     redirectClient();
 } else {
     if (localStorage.getItem("user") && localStorage.getItem("login")) {
+        // https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/ventas/')
             .then(function (response) {
                 response.data.forEach(function (dato) {
