@@ -13,14 +13,16 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
     if (empleadoJSON.Rol === "Administrador" && localStorage.getItem("login")) {
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/registros/corte')
             .then(function (response) {
-                registros = response.data;
+                registros = response;
+                console.log('response :>> ', response);
             })
             .catch(function (error) {
                 console.log(error);
             });
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/corte/reservaciones')
             .then(function (response) {
-                reservaciones = response.data;
+                reservaciones = response;
+                console.log('response :>> ', response);
             })
             .catch(function (error) {
                 console.log(error);
@@ -28,7 +30,7 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
 
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/v1/ventas/corte')
             .then(function (response) {
-                reservaciones = response.data;
+                reservaciones = response;
             })
             .catch(function (error) {
                 console.log(error);
