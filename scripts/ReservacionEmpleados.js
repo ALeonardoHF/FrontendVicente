@@ -18,7 +18,7 @@ if (localStorage.getItem("cliente") || localStorage.getItem("user") == null) {
     if (user && login) {
             // Producción > https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/reservaciones
             // Desarrollo > http://localhost:3002/api/reservaciones
-        axios.get(`https://app-2d64e7c9-c8c0-4a1d-a9a3-13fa174719d3.cleverapps.io/api/reservaciones`)
+        axios.get(`https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/reservaciones`)
             .then(function (response) {
                 response.data.forEach(function (dato) {
 
