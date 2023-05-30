@@ -11,55 +11,8 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
     redirectToNewPage();
 } else {
     if (empleadoJSON.Rol === "Administrador" && localStorage.getItem("login")) {
-        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/registros/corte')
-            .then(function (response) {
-                registros = response;
-                console.log('response :>> ', response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/corte/reservaciones')
-            .then(function (response) {
-                reservaciones = response;
-                console.log('response :>> ', response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
 
-        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/v1/ventas/corte')
-            .then(function (response) {
-                reservaciones = response;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-        if (reservaciones == null) {
-            reservaciones = 0;
-        }
-
-        if (registros == null) {
-            registros = 0;
-        }
-
-        if (ventas == null) {
-            ventas = 0;
-        }
-
-        const fila1 = tabla.insertRow();
-        var totalVentasCelda = fila1.insertCell();
-        var totalResRegCelda = fila1.insertCell();
-
-        totalVentasCelda.innerHTML = ventas;
-
-        let totalResReg = reservaciones + registros;
-        totalResRegCelda.innerHTML = totalResReg;
-
-        console.log('reservaciones :>> ', reservaciones);
-        console.log('registros :>> ', registros);
-        console.log(totalResReg);
+        ObtenerDatosCortes()
 
     } else {
         redirectToNewPage();
@@ -99,3 +52,64 @@ function redirectToMenu() {
         redirectToNewPage();
     }
 }
+
+function ObtenerDatosCortes() {
+    const registros = 'https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/registros/corte';
+    const reservaciones = 'https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/corte/reservaciones';
+    const ventas = 'https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/v1/ventas/corte';
+
+    Promise.all([
+        obtenerDatos(registros),
+        obtenerDatos(reservaciones),
+        obtenerDatos(ventas)
+    ])
+    .then(datos => mostrarDatosTabla(datos))
+    .catch(error => console.error(error));
+}
+
+function mostrarDatosTabla(datos) {
+        datos.foreach(objeto => {
+            const fila = tabla.insertRow();
+            Object.values(objeto).foreach(valor => {
+                const celda = fila.insertCell();
+                celda.textContent = valor;
+            });
+        });
+}
+
+// const fila1 = tabla.insertRow();
+//         var totalVentasCelda = fila1.insertCell();
+//         var totalResRegCelda = fila1.insertCell();
+
+//         totalVentasCelda.innerHTML = ventas;
+
+//         let totalResReg = reservaciones + registros;
+//         totalResRegCelda.innerHTML = totalResReg;
+
+
+// axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/registros/corte')
+// .then(function (response) {
+//     registros = response.data;
+//     console.log('response registros:>> ', response.data);
+// })
+// .catch(function (error) {
+//     console.log(error);
+// });
+
+// axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/corte/reservaciones')
+// .then(function (response) {
+//     reservaciones = response.data;
+//     console.log('response reservaciones:>> ', response.data);
+// })
+// .catch(function (error) {
+//     console.log(error);
+// });
+
+// axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/v1/ventas/corte')
+// .then(function (response) {
+//     reservaciones = response.data;
+//     console.log('response ventas:>> ', response.data);
+// })
+// .catch(function (error) {
+//     console.log(error);
+// });
