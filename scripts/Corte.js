@@ -17,6 +17,7 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
 
         axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/registros/corte')
         .then(function (response) {
+            console.log('response :>> ', response);
             registros = response.data;
             totalRegistros.innerHTML = registros;
         })
@@ -33,8 +34,9 @@ if (!localStorage.getItem('login') && empleadoJSON.Rol != "Administrador") {
             console.log(error);
         });
 
-        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/v1/ventas/corte')
+        axios.get('https://app-f28b4b9e-0ca3-47b2-a6e1-3077c5a13b5b.cleverapps.io/api/total')
         .then(function (response) {
+            console.log('response :>> ', response);
             ventas = response.data;
             totalVentasCelda.innerHTML = ventas;
         })

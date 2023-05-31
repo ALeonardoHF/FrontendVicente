@@ -98,7 +98,7 @@ function obtenerValores(event) {
     var columns = row.getElementsByTagName('td'); // Obtener las columnas de la fila
   
     var articulo = columns[0].innerText; // Obtener el valor de la columna "articulo"
-    var precio = columns[1].innerText; // Obtener el valor de la columna "precio"
+    var precio = columns[2].innerText; // Obtener el valor de la columna "precio"
   
     // Asignar los valores a los elementos deseados
     document.getElementById("articulo").value = articulo;

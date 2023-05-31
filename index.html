@@ -1,111 +1,242 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Título de la página</title>
+	<title>Vicmar</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 	<style>
-		/* Estilos para el botón de clientes */
-		.boton-clientes {
-			position: absolute;
-			top: 20px;
-			right: 20px;
-			padding: 10px;
-			background-color: #007bff;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			transition: all 0.2s ease-in-out;
-			text-decoration: none;
-		}
-		
-		.boton-clientes:hover, .boton-clientes:focus {
-			transform: scale(1.1);
-		}
-		
-		.boton-clientes:active {
-			transform: scale(0.9);
+		.navtitle {
+			color: white;
 		}
 
-		/* Estilos para el botón de empleados */
-		.boton-empleados {
-			position: absolute;
-			bottom: 20px;
-			left: 20px;
-			padding: 10px;
-			background-color: #007bff;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			transition: all 0.2s ease-in-out;
-			text-decoration: none;
-		}
-		
-		.boton-empleados:hover, .boton-empleados:focus {
-			transform: scale(1.1);
-		}
-		
-		.boton-empleados:active {
-			transform: scale(0.9);
+		.precioBoton {
+			font-weight: bold;
+			font-size: large;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 		}
 
-		/* Estilos para la sección de imágenes */
-		.slider {
-			position: relative;
-			height: 300px;
+
+		body {
+
+			font-family: Arial, sans-serif;
+
+			text-align: center;
+
+			margin: 0;
+
+			padding: 0;
+
+			color: #000;
+			/* Color de texto negro */
+
 			overflow: hidden;
-			margin: 0 auto; /* Añadido para centrar la sección de imágenes */
+
 		}
-		
-		.slider img {
-			position: absolute;
-			left: 0;
-			top: 0;
-			height: 100%;
-			width: 100%;
-			object-fit: cover;
-			animation: slide 5s infinite;
-			opacity: 0;
-			z-index: -1;
+
+
+
+		.centerP {
+
+			display: flex;
+
+			justify-content: center;
+
+			align-items: center;
+
+			height: calc(100vh - 100px);
+
 		}
-		
-		.slider img:first-child {
-			opacity: 1;
-			z-index: 1;
+
+
+		.btnP {
+
+			background-color: #FFD700;
+
+			color: #000;
+			/* Color de texto negro */
+
+			border: none;
+
+			padding: 10px 20px;
+
+			border-radius: 5px;
+
+			cursor: pointer;
+
+			font-weight: bold;
+
+			transition: background-color 0.3s ease;
+
 		}
-		
-		@keyframes slide {
-			0% {
-				opacity: 0;
-			}
-			20% {
-				opacity: 1;
-			}
-			25% {
-				opacity: 1;
-			}
-			45% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 0;
-			}
+
+
+		.btnP:hover {
+
+			background-color: #ffc800b0;
+
+		}
+
+
+		.btnP:active {
+
+			transform: scale(0.9);
+			/* Reducir el tamaño del botón al hacer clic */
+
+			transition: transform 0.3s ease;
+			/* Agregar una transición suave */
+
+		}
+
+		a {
+			text-decoration: none;
 		}
 	</style>
 </head>
-<body>
-	<a class="boton-clientes" href="Log_In_Cliente.html">Clientes</a>
-	<a class="boton-empleados" href="Log In Empleado.html">Empleados</a>
-	
-	<h1>Motel Vic-Mar</h1> <!-- Añadido el título -->
 
-	<div class="slider">
-		
-		<img src="imagen1.jpg">
-		<img src="imagen2.jpg">
-		<img src="imagen3.jpg">
-		<img src="imagen4.jpg">
-		<img src="imagen5.jpg">
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<img src="images/panda.png" width="90px" height="90px" alt="Vicmar" />
+		<h1 class="h1 text-center navtitle">Motel Vic-Mar</h1>
+		<a class="position-absolute top-1 end-0 btn btn-primary me-md-2 btn btn-primary"
+			href="Log_In_Cliente.html">Clientes</a>
+	</nav>
+
+	<div class="container">
+		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="images/entrada.jpg" class="d-block w-100" alt="Vicmar">
+				</div>
+				<div class="carousel-item">
+					<img src="images/habitaciones.jpg" class="d-block w-100" alt="Vicmar">
+				</div>
+				<div class="carousel-item">
+					<img src="images/habitacion.jpg" class="d-block w-100" alt="Vicmar">
+				</div>
+				<div class="carousel-item">
+					<img src="images/noche_habitaciones.jpg" class="d-block w-100" alt="Vicmar">
+				</div>
+				<div class="carousel-item">
+					<img src="images/noche_habitacion.jpg" class="d-block w-100" alt="Vicmar">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+				data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+				data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
 	</div>
+
+	<div class="container">
+
+		<div class="texto-bienvenida">
+			<div class="col text-center">
+				<button class="precioBoton btnP center m-2" onclick="abrirModal()">Precios</button>
+			</div>
+
+			<a href="https://www.facebook.com/MotelVicMarOficial/">Facebook</a>
+			<a
+				href="https://www.google.com/travel/search?q=facebook%20motel%20vicmar&g2lb=2502548%2C2503771%2C2503781%2C4258168%2C4270442%2C4284970%2C4291517%2C4306835%2C4429192%2C4515404%2C4597339%2C4757164%2C4778035%2C4814050%2C4850738%2C4864715%2C4874190%2C4886480%2C4893075%2C4920132%2C4924070%2C4965990%2C4985711%2C4990494%2C72248281%2C72253158%2C72253256%2C72254365%2C72256470%2C72266483%2C72266485%2C72271034%2C72271797%2C72272556&hl=en-MX&gl=mx&ssta=1&ts=CAESABpJCikSJzIlMHg4NmU3NWViNTBmZGU5YTkzOjB4ZTlkMjE0MDg5YzIxMTg1NBIcEhQKBwjnDxAGGBoSBwjnDxAGGBsYATIECAAQAA&qs=CAEyKENob0kxTENFNFltQmhlbnBBUm9OTDJjdk1URmlkbk56TUcxNFp4QUI4AkILCVQYIZwIFNLpGAFCCwlUGCGcCBTS6RgB&ap=ugEIb3ZlcnZpZXc&ictx=1&sa=X&utm_campaign=sharing&utm_medium=link_btn&utm_source=htls">Google
+				Maps</a>
+
+			<p><strong>¡Bienvenidos a Motel Vic-Mar!</strong></p>
+
+
+			<p>Desde 1990, hemos sido el destino preferido para aquellos que buscan una experiencia inolvidable
+				llena de comodidad, lujo y atención excepcional. En Motel Vic-Mar, nos enorgullece ofrecer el mejor
+				servicio de calidad a nuestros distinguidos huéspedes.</p>
+
+			<p>Nuestro compromiso con la excelencia se refleja en cada aspecto de nuestro establecimiento. Cada
+				una de nuestras habitaciones ha sido cuidadosamente diseñada para brindar un ambiente acogedor y
+				elegante, donde podrás relajarte y disfrutar de una estancia placentera. Contamos con una amplia gama de
+				opciones de alojamiento, desde habitaciones estándar hasta suites de lujo, todas equipadas con las
+				comodidades modernas que te harán sentir como en casa.</p>
+
+			<p>Nuestro equipo de profesionales amables y dedicados está listo para atender tus necesidades y
+				hacer de tu estancia una experiencia inolvidable. Nos esforzamos por superar tus expectativas en cada
+				detalle, ya sea que necesites asistencia con la planificación de actividades locales, recomendaciones de
+				restaurantes o cualquier otro requerimiento especial.</p>
+
+			<p>Además de nuestras lujosas habitaciones, en Motel Vic-Mar también ofrecemos una amplia gama de
+				servicios para hacer de tu estadía algo excepcional. Disfruta de nuestra piscina climatizada, relájate
+				en nuestro spa, aprovecha nuestro gimnasio o simplemente déjate consentir con nuestro servicio de
+				habitaciones las 24 horas.</p>
+
+			<p>Ubicado en un entorno tranquilo y pintoresco, nuestro motel te ofrece la posibilidad de escapar
+				del bullicio de la ciudad y sumergirte en un oasis de paz y tranquilidad. Sin embargo, también estamos
+				convenientemente ubicados cerca de atracciones turísticas, restaurantes y tiendas, para que puedas
+				explorar y disfrutar de todo lo que nuestra hermosa ubicación tiene para ofrecer.</p>
+
+			<p>Te invitamos a descubrir por qué Motel Vic-Mar se ha convertido en sinónimo de calidad y excelencia en el
+				sector hotelero. Permítenos ser tu elección de alojamiento en tus próximas vacaciones, viaje de negocios
+				o escapada romántica. Estamos ansiosos por darte la bienvenida y asegurarnos de que tu estancia sea
+				inolvidable.</p>
+
+		</div>
+	</div>
+
+	<dialog id="modalIndex">
+		<button class="btn btn-danger position-absolute top-0 end-0" onclick="cerrarModal()">X</button>
+		<img src="images/precios.png">
+		<br>
+		<a href="https://www.facebook.com/MotelVicMarOficial/">Facebook</a>
+		<a
+			href="https://www.google.com/travel/search?q=facebook%20motel%20vicmar&g2lb=2502548%2C2503771%2C2503781%2C4258168%2C4270442%2C4284970%2C4291517%2C4306835%2C4429192%2C4515404%2C4597339%2C4757164%2C4778035%2C4814050%2C4850738%2C4864715%2C4874190%2C4886480%2C4893075%2C4920132%2C4924070%2C4965990%2C4985711%2C4990494%2C72248281%2C72253158%2C72253256%2C72254365%2C72256470%2C72266483%2C72266485%2C72271034%2C72271797%2C72272556&hl=en-MX&gl=mx&ssta=1&ts=CAESABpJCikSJzIlMHg4NmU3NWViNTBmZGU5YTkzOjB4ZTlkMjE0MDg5YzIxMTg1NBIcEhQKBwjnDxAGGBoSBwjnDxAGGBsYATIECAAQAA&qs=CAEyKENob0kxTENFNFltQmhlbnBBUm9OTDJjdk1URmlkbk56TUcxNFp4QUI4AkILCVQYIZwIFNLpGAFCCwlUGCGcCBTS6RgB&ap=ugEIb3ZlcnZpZXc&ictx=1&sa=X&utm_campaign=sharing&utm_medium=link_btn&utm_source=htls">Google
+			Maps</a>
+	</dialog>
+
+
+	<footer>
+		<div class="position-absolute bottom-0 start-0">
+			<a class="btn btn-primary me-md-2 btn btn-primary" href="Log In Empleado.html">Empleados</a>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+		integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+		crossorigin="anonymous"></script>
+
+	<script>
+		function abrirModal() {
+			var modal = document.getElementById("modalIndex");
+			document.addEventListener("keydown", cerrarModal);
+			modal.showModal(); // Muestra el modal
+			cargarTabla();
+		}
+
+		// Función para cerrar el modal
+		function cerrarModal() {
+			var modal = document.getElementById("modalIndex");
+			document.removeEventListener("keydown", cerrarModal);
+			modal.close(); // Cierra el modal
+		}
+
+		function logOut() {
+			localStorage.removeItem("user");
+			localStorage.removeItem("login");
+		}
+
+		function logOutCliente() {
+			localStorage.removeItem("cliente");
+			localStorage.removeItem("loginCliente");
+			// window.location.reload();
+		}
+
+		logOut();
+		logOutCliente();
+	</script>
 </body>
+
 </html>
